@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GetQD</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="GQStartActivity_FacebookLoginText">Facebook Login</string>
+    <string name="GQStartActivity_EmailLoginText">Email Login</string>
+    <string name="GQStartActivity_RegisterText">Register</string>
+    <string name="GQStartActivity_ForgotLoginText">Forgot Login?</string>
+
+    <string name="GQStartActivity_EmailText">Email</string>
+    <string name="GQStartActivity_PasswordText">Password</string>
+
+    <string name="GQStartActivity_LoginText">Login</string>
+    <string name="GQProfileActivity_RegisterText">Register</string>
+    <string name="GQProfileActivity_CancelText">Cancel</string>
+    <string name="GQProfileActivity_RegistrationText">REGISTRATION</string>
+    <string name="GQBase_URL">https://beta.getqd.me/</string>
+    <string name="title_section1">Profile</string>
+    <string name="title_section2">Venue</string>
+    <string name="title_section3">Event</string>
+    <string name="title_section4">Ticket</string>
+    <string name="title_section5">Staff</string>
+    <string name="title_section6">Logout</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+
+    <color name="white">#FFFFFF</color>
+    <color name="GQColor">#00CCCC</color>
+    <color name="GQBlue">#778899</color>
+    <color name="red">#ff0000</color>
+    <color name="orange">#ff5500</color>
+    <color name="transparent">#00000000</color>
+    <color name="date_color">#999999</color>
+    <color name="black">#000000</color>
+    <color name="gray">#999999</color>
+    <color name="blue">#0066cc</color>
+    <color name="gold">#e6b121</color>
+    <color name="blueback">#99FFFF</color>
+    <color name="articlecolor">#3399FF</color>
+    <color name="article_title">#3399FF</color>
+    <color name="cachecolor">#8ad0e8</color>
+
+    <string name="title_activity_gqprofile">GQProfileActivity</string>
+    <string name="title_activity_gqmain">GQMainActivity</string>
+    <string name="GQStaffResv_ReserveButtonText">Reserve</string>
+    <string name="GQStaffResv_CancelText">Cancel</string>
+    <string name="GQPStaffResv_Text">  BOOK GUEST  </string>
+    <string name="title_activity_gqbook_guest">GQBookGuestActivity</string>
+    <string name="GQStaffBookGuestDateButtonText">July 30,2015</string>
+    <string name="GQStaffBookGuestTimeButtonText">7:00PM</string>
+    <string name="GQStaffBookGuestDateAndTime1">Reservation Date/Time - Click to Change</string>
+    <string name="GQStaffBookGuestDateAndTime2">(Click to Change)</string>
+    <string name="GQStaffBookGuestPartySize">How Many In Your Party?</string>
+    <string name="GQStaffBookGuestPartyReason">Reason</string>
+    <string name="GQStaffBookGuestPartyDetails">Details</string>
+    <string name="Frag_Target_Profile">Profile</string>
+    <string name="Frag_Target_Venues">Venues</string>
+    <string name="Frag_Target_Events">Events</string>
+    <string name="Frag_Target_Tickets">Tickets</string>
+    <string name="Frag_Target_Staff">Staff</string>
+    <string name="Frag_Target_Logout">Logout</string>
+    <string name="reason_prompt">Reason for Reservation</string>
+    <string name="GQReservations">Reservations</string>
+    <string name="GQMyReservations">My Reservations</string>
+    <string name="GQReservationsSpecialDetails">Special Detail Requests</string>
+    <string name="GQStatistics">Statistics</string>
+    <string name="GQSales">Sales</string>
+    <string name="GQStats_Tally_Booked">0</string>
+    <string name="GQStats_Tally_Checked_In">0</string>
+    <string name="GQStats_Tally_Booked_Text">Total Booked</string>
+    <string name="GQStats_Tally_Checked_In_Text">Total Checked In</string>
+    <string name="GQSellTickets">Sell Tickets</string>
+    <string name="title_activity_gqcard_io">GQCardIO</string>
+
+    <string name="multiplelines">Line 1 \n Line 2</string>
+
+
+    <string name="ConfigMode">Large</string>
+</resources>

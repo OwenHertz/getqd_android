@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.upincode.getqd">
+
+    <use-sdk android:minSdkVersion="8" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permission to vibrate - recommended, allows vibration feedback on scan -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Permission to use camera - required -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Camera features - recommended -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+
+
+    <application
+        android:name="com.app.upincode.getqd.GlobalClass"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.app.upincode.getqd.GQStartActivity"
+            android:label="Please Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQProfileActivity"
+            android:label="My Profile"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQMainActivity"
+            android:label="Main Menu"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQBookGuestActivity"
+            android:label="Book a Reservation"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQMyResoActivity"
+            android:label="My Reservations"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQStatisticsActivity"
+            android:label="Event Stats Summary"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQStatisticsDisplayActivity"
+            android:label="Event Stats"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQSelectTicketActivity"
+            android:label="Select Tickets"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQSalesActivity"
+            android:label="Events"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQCardioActivity"
+            android:label="Credit Card"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQInteractActivity"
+            android:label="Interact"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQCompActivity"
+            android:label="Complimentary"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQTicketsDisplayActivity"
+            android:label="My Tickets"></activity>
+        <activity
+            android:name="com.app.upincode.getqd.GQVenueActivity"
+            android:label="My Waitlist"></activity>
+
+        <!-- Activities responsible for gathering payment info -->
+        <activity
+            android:name="io.card.payment.CardIOActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity android:name="io.card.payment.DataEntryActivity" />
+    </application>
+
+</manifest>

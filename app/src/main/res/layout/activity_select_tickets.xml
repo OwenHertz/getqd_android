@@ -1,0 +1,202 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/GQStaffResv_CancelText"
+                android:layout_weight="1"
+                android:layout_marginBottom="5dp"
+                android:background="@color/GQColor"
+                android:id="@+id/StaffCancelReservationButton" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Select Tickets"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:id="@+id/textView1" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="TIME AND SHOW NAME GO HERE"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="left|top"
+            android:id="@+id/textViewTitle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Tickets Assigned"
+            android:textColor="@color/GQColor"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/textView02" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/GQBlue"
+            android:textColor="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="TICKET TYPE"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:id="@+id/textView12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="AMOUNT"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:id="@+id/textView22" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="PRICE"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:id="@+id/textView32" />
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/listViewStaff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:entries="@array/Delivery_Method"
+                android:prompt="@+id/reason_prompt"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:id="@+id/Delivery_Method" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginBottom="5dp"
+                android:entries="@array/Payment_Type"
+                android:prompt="@+id/reason_prompt"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:id="@+id/PayWith" />
+        </LinearLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/GQBlue"
+            android:textColor="@color/white">
+
+            <TextView
+                android:id="@+id/totalprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="$0.00"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white"
+                android:layout_alignParentTop="true" />
+
+            <TextView
+                android:id="@+id/totalpricewithfees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:text="$0.00"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/totalprice" />
+
+            <TextView
+                android:id="@+id/eventVenue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:text="Total"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true" />
+
+            <TextView
+                android:id="@+id/eventTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:text="+Taxes + Fees"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/eventVenue" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Continue"
+                android:background="@color/GQColor"
+                android:textColor="@color/white"
+                android:id="@+id/ContinueButton"
+                android:layout_below="@id/eventTitle" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

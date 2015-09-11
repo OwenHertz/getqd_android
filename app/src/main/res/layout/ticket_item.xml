@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="1dp"
+    android:paddingBottom="1dp">
+
+    <TextView
+        android:id="@+id/eventTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#000"
+        android:text="The Event Name Goes Up Here"
+        android:textStyle="bold"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+
+        />
+
+    <TextView
+        android:id="@+id/eventDateAndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:text="Date"
+        android:textStyle="bold"
+        android:layout_below="@id/eventTitle"
+
+        />
+
+    <TextView
+        android:id="@+id/eventNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:text=" > "
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/eventTicketCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/GQColor"
+        android:text="Ticket Count"
+        android:textStyle="bold"
+        android:layout_toLeftOf="@id/eventNext"
+        android:gravity="center_vertical" />
+
+
+</RelativeLayout>

@@ -1,0 +1,1 @@
+include ':app', ':card.io-5.0.1', ':barcode4j-2.1', 'OnBarcode.AndroidBarcode'

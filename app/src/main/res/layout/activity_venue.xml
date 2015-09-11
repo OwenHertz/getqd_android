@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Return"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:background="@color/GQColor"
+            android:id="@+id/VenueCancelButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Ranchmans"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:id="@+id/textView1" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/getqdbiglogowhite"
+        android:scaleType="fitXY"
+        android:id="@+id/SalesStatsListView" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Closed"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:textColor="#000"
+            android:id="@+id/OpenClosed" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Reservation"
+            android:layout_weight="4"
+            android:layout_marginBottom="5dp"
+            android:textColor="#000"
+            android:id="@+id/ReservationButton" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="In Line"
+            android:layout_weight="1"
+            android:textColor="#FFF"
+            android:layout_marginRight="5dp"
+            android:background="@color/GQColor"
+            android:id="@+id/InLine" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Visits"
+            android:textColor="#FFF"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:background="@color/GQColor"
+            android:id="@+id/Visits" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Favorite"
+            android:textColor="#FFF"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:background="@color/GQColor"
+            android:id="@+id/Favorites" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Events"
+            android:textColor="#FFF"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:background="@color/GQColor"
+            android:id="@+id/Events" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Chat"
+            android:textColor="#FFF"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:background="@color/GQColor"
+            android:id="@+id/Chats" />
+
+
+    </LinearLayout>
+</LinearLayout>

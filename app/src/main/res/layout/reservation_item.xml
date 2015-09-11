@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+
+    <TextView
+        android:id="@+id/resmonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:text="Month"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+
+    <TextView
+        android:id="@+id/resday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:text="Day"
+        android:paddingLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/resmonth" />
+
+    <TextView
+        android:id="@+id/restime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/GQColor"
+        android:paddingLeft="2dp"
+        android:text="Day"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/resday" />
+
+    <TextView
+        android:id="@+id/resusername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#000"
+        android:text="username"
+        android:textStyle="bold"
+        android:paddingLeft="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/rescheckin" />
+
+    <TextView
+        android:id="@+id/resdetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#000"
+        android:text="details"
+        android:paddingLeft="5dp"
+        android:layout_below="@+id/resusername"
+        android:layout_toLeftOf="@+id/rescheckin" />
+
+
+    <ImageView
+        android:id="@+id/usersImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/greenusers"
+        android:paddingLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/resdetails"
+        android:layout_toLeftOf="@+id/rescheckin" />
+
+    <TextView
+        android:id="@+id/rescheckin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#000"
+        android:paddingLeft="40dp"
+        android:text="Checkin Info"
+        android:textStyle="bold"
+        android:layout_below="@+id/resday"
+        android:layout_toLeftOf="@+id/resusersImage2" />
+
+    <ImageView
+        android:id="@+id/resusersImage2"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:paddingLeft="20dp"
+        android:src="@drawable/approved"
+        android:layout_marginTop="5dp"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
