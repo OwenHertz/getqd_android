@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.app.upincode.getqd.GlobalClass;
 import com.app.upincode.getqd.R;
+import com.app.upincode.getqd.config.GQConfig;
 import com.app.upincode.getqd.logging.GQLog;
 import com.app.upincode.getqd.utils.GQHttpsClient;
 
@@ -67,7 +68,7 @@ public class GQBaseModel extends AsyncTask<String, Void, Boolean> {
         client = new GQHttpsClient(context);  // build new Client
 
         try {
-            String BaseURL = new String("https://beta.getqd.com/");
+            String BaseURL = GQConfig.PROPERTIES.BASE_URL;
             GlobalClass globalVariable = (GlobalClass) context.getApplicationContext();
             String AUTH = new String("JWT " + globalVariable.getToken());
 

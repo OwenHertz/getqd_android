@@ -9,7 +9,7 @@ public final class GQLog {
      * log debug message
      */
     public static void d(String tag, String msg) {
-        if (GQConfig.DEBUG) {
+        if (GQConfig.PROPERTIES.DEBUG) {
             Log.d(tag, msg);
         }
     }
@@ -18,7 +18,7 @@ public final class GQLog {
      * log debug message for object
      */
     public static void dObj(Object obj, String msg) {
-        if (GQConfig.DEBUG) {
+        if (GQConfig.PROPERTIES.DEBUG) {
             Log.d(obj.getClass().getName(), msg);
         }
     }

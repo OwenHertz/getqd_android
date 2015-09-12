@@ -6,8 +6,11 @@ package com.app.upincode.getqd;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.util.Log;
 
+import com.app.upincode.getqd.config.GQConfig;
 import com.app.upincode.getqd.logging.GQLog;
 
 import org.apache.http.client.CookieStore;
@@ -38,6 +41,23 @@ public class GlobalClass extends Application {
     private String IAMI = null;
     private String SellingRole = null;
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        // Initialize preferences
+        Resources resources = this.getResources();
+        AssetManager assetManager = resources.getAssets();
+
+        try {
+            GQConfig.initialize(assetManager);
+        } catch (IOException e) {
+            //Couldn't initialize settings for some reason! Close app
+            System.err.println("Could not initialize app settings!");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
 
     /*  These are the profile fields for the User.
     LoginID

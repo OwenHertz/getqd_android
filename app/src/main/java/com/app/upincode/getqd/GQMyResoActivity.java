@@ -340,7 +340,7 @@ public class GQMyResoActivity extends ActionBarActivity {
                     Integer.parseInt(minute));
 
 
-            if (GQConfig.DEBUG) DumpCalendar("C2 in GMT Time", c2);
+            if (GQConfig.PROPERTIES.DEBUG) DumpCalendar("C2 in GMT Time", c2);
             // Get a Calendar instance using the default time zone and locale.
             Calendar calendar = Calendar.getInstance();                             // get calendar for the venue
             // Set the calendar's time with the given date

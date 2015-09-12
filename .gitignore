@@ -36,3 +36,6 @@ proguard/
 
 # Android Studio captures folder
 captures/
+
+# Local settings file
+/app/src/main/assets/config/local.properties
