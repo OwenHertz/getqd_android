@@ -1,4 +1,4 @@
-package com.app.upincode.getqd.frags.dummy;
+package com.app.upincode.getqd.activities.frags.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

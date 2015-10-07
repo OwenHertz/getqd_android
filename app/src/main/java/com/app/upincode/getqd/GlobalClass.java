@@ -8,38 +8,36 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
-import android.util.Log;
 
+import com.app.upincode.getqd.activities.GQActivityUtils;
 import com.app.upincode.getqd.config.GQConfig;
+import com.app.upincode.getqd.config.GQConstants;
 import com.app.upincode.getqd.logging.GQLog;
-
-import org.apache.http.client.CookieStore;
+import com.app.upincode.getqd.networking.parsers.user_based.UBVenueParser;
+import com.app.upincode.getqd.networking.parsers.generic.CurrentUserParser;
+import com.app.upincode.getqd.utils.DateFormatUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
 
 public class GlobalClass extends Application {
-    private String name = null;
-    private String email = null;
-    private String password = null;
     private String token = null;
     private String csrfToken = null;
     private String UserVenuesJSON = null;
     private String LoginJSON = null;
-    private CookieStore cStore = null;
     private String AnalyticsEventStats = null;
     private String BoxOfficeEventAccesses = null;
     private String BoxOfficeEventAccessesCurrentSlug = null;
     private String BasketInfo = null;
-    private String PropertiesFileName = null;
     private String TicketsTicketGroup = null;
     private String IAMI = null;
     private String SellingRole = null;
+    private UBVenueParser[] userVenues;
+    private CurrentUserParser currentUser;
 
     @Override
     public void onCreate() {
@@ -48,6 +46,8 @@ public class GlobalClass extends Application {
         // Initialize preferences
         Resources resources = this.getResources();
         AssetManager assetManager = resources.getAssets();
+
+        DateFormatUtils.init(this);
 
         try {
             GQConfig.initialize(assetManager);
@@ -76,53 +76,56 @@ public class GlobalClass extends Application {
     StartTarget
      */
     public void setProfileValue(Context ctxt, String targetProperty, String Value) {
-        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-        String fileName = globalVariable.getPropertiesFileName();
-        Properties prop = new Properties();
-        OutputStream output = null;
-        try {
-             GQLog.dObj(this, "Set Propertie=" + targetProperty + " to value= " + Value);
-            File propertiesFile = new File(ctxt.getExternalFilesDir(null), fileName);
-            if (!propertiesFile.exists()) {
-                 GQLog.dObj(this, "making a getqd.properties file in Set");
-                propertiesFile.createNewFile();
-            }
-            FileInputStream fis = new FileInputStream(propertiesFile);
-            prop.load(fis);
+        //TODO remove
+        throw new RuntimeException("DONT USE THIS");
 
-            // set the properties value
-            prop.setProperty(targetProperty, Value);
-            // save properties to project root folder
-
-            output = new FileOutputStream(propertiesFile);
-            prop.store(output, null);
-
-        } catch (IOException io) {
-            io.printStackTrace();
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
+//        final GlobalClass globalVariable = GQActivityUtils.getGlobalClass(this);
+//        String fileName = globalVariable.getPropertiesFileName();
+//        Properties prop = new Properties();
+//        OutputStream output = null;
+//        try {
+//             GQLog.dObj(this, "Set Propertie=" + targetProperty + " to value= " + Value);
+//            File propertiesFile = new File(ctxt.getExternalFilesDir(null), fileName);
+//            if (!propertiesFile.exists()) {
+//                 GQLog.dObj(this, "making a getqd.properties file in Set");
+//                propertiesFile.createNewFile();
+//            }
+//            FileInputStream fis = new FileInputStream(propertiesFile);
+//            prop.load(fis);
+//
+//            // set the properties value
+//            prop.setProperty(targetProperty, Value);
+//            // save properties to project root folder
+//
+//            output = new FileOutputStream(propertiesFile);
+//            prop.store(output, null);
+//
+//        } catch (IOException io) {
+//            io.printStackTrace();
+//        } finally {
+//            if (output != null) {
+//                try {
+//                    output.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//        }
     }
 
     public String getProfileValue(Context ctxt, String targetProperty) {
         String Value = null;
-        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+        final GlobalClass globalVariable = GQActivityUtils.getGlobalClass(this);
         String fileName = globalVariable.getPropertiesFileName();
         Properties prop = new Properties();
         OutputStream output = null;
         try {
-             GQLog.dObj(this, "Get Propertie=" + targetProperty);
+            GQLog.dObj(this, "Get Propertie=" + targetProperty);
 
             File propertiesFile = new File(ctxt.getExternalFilesDir(null), fileName);
             if (!propertiesFile.exists()) {
-                 GQLog.dObj(this, "making a getqd.properties file in Get");
+                GQLog.dObj(this, "making a getqd.properties file in Get");
                 propertiesFile.createNewFile();
                 return (Value);
             }
@@ -149,88 +152,75 @@ public class GlobalClass extends Application {
         }
     }
 
+    /**
+     * @deprecated use GQConstants.APP_NAME instead.
+     */
+    @Deprecated
     public String getName() {
 
-        return name;
+        return GQConstants.APP_NAME;
     }
 
+    /**
+     * @deprecated use GQConstants.APP_NAME instead.
+     */
+    @Deprecated
     public void setName(String aName) {
 
-        name = aName;
-
     }
 
-    public String getEmail() {
-
-        return email;
-    }
-
-    public void setEmail(String newEmail) {
-        GQLog.d("GlobalClass", "Setting the Email=" + newEmail);
-        email = newEmail;
-    }
-
-    public String getPassword() {
-
-        return password;
-    }
-
-    public void setPassword(String newPassword) {
-        GQLog.d("GlobalClass", "Setting the Password=" + newPassword);
-        password = newPassword;
-    }
-
+    //TODO check usage
+    @Deprecated
     public String getToken() {
-
         return token;
     }
 
+    //TODO check usage
+    @Deprecated
     public void setToken(String aName) {
-
         token = aName;
-
     }
 
-
+    //TODO check usage
+    @Deprecated
     public String getUserVenuesJSON() {
+
 
         return UserVenuesJSON;
     }
 
+    //TODO check usage
+    @Deprecated
     public void setUserVenuesJSON(String aName) {
 
         UserVenuesJSON = aName;
 
     }
 
+    //TODO check usage
+    @Deprecated
     public String getloginJSON() {
 
         return LoginJSON;
     }
 
+    //TODO check usage
+    @Deprecated
     public void setloginJSON(String aName) {
 
         LoginJSON = aName;
 
     }
 
-    public CookieStore getCStore() {
-
-        return cStore;
-    }
-
-    public void setCStoreToken(CookieStore aName) {
-
-
-        cStore = aName;
-
-    }
-
+    //TODO check usage
+    @Deprecated
     public String getCsrfToken() {
 
         return csrfToken;
     }
 
+    //TODO check usage
+    @Deprecated
     public void setCsrfToken(String aName) {
         //Log.d("GlobalClass", "SetCsrfToken to" + aName);
 
@@ -287,16 +277,19 @@ public class GlobalClass extends Application {
         return BasketInfo;
     }
 
+    /**
+     * @deprecated use GQConstants.PROPERTIES_FILE_NAME instead.
+     */
+    @Deprecated
     public void setPropertiesFileName(String aName) {
-        //Log.d("GlobalClass", "SetCsrfToken to" + aName);
-
-        PropertiesFileName = aName;
-
     }
 
+    /**
+     * @deprecated use GQConstants.PROPERTIES_FILE_NAME instead.
+     */
+    @Deprecated
     public String getPropertiesFileName() {
-
-        return PropertiesFileName;
+        return GQConstants.PROPERTIES_FILE_NAME;
     }
 
     public void setTicketsTicketGroup(String aName) {
@@ -336,5 +329,21 @@ public class GlobalClass extends Application {
     public String getSellingRole() {
 
         return SellingRole;
+    }
+
+    public void setUserVenues(UBVenueParser[] userVenues) {
+        this.userVenues = userVenues;
+    }
+
+    public UBVenueParser[] getUserVenues() {
+        return userVenues;
+    }
+
+    public void setCurrentUser(CurrentUserParser currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public CurrentUserParser getCurrentUser() {
+        return this.currentUser;
     }
 }

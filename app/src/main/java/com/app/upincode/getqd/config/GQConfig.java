@@ -12,10 +12,6 @@ import java.util.Properties;
  * Contains all important settings for entire project.
  */
 public final class GQConfig {
-    public static final String DEFAULT_PROPERTIES_PATH = "config/default.properties";
-    public static final String DEBUG_PROPERTIES_PATH = "config/debug.properties";
-    public static final String PRODUCTION_PROPERTIES_PATH = "config/production.properties";
-    public static final String LOCAL_PROPERTIES_PATH = "config/local.properties";
 
     //Holds system current config properties
     // - Initialized when application is created
@@ -37,21 +33,20 @@ public final class GQConfig {
 
     protected GQConfig(AssetManager assetManager) throws IOException {
         //Load configuration from appropriate .properties files
-        Properties properties = this.importPropertiesFile(assetManager, DEFAULT_PROPERTIES_PATH);
+        Properties properties = this.importPropertiesFile(assetManager, GQConstants.DEFAULT_PROPERTIES_PATH);
         if (BuildConfig.DEBUG) {
             // Load debug properties
-            properties.putAll(this.importPropertiesFile(assetManager, DEBUG_PROPERTIES_PATH));
+            properties.putAll(this.importPropertiesFile(assetManager, GQConstants.DEBUG_PROPERTIES_PATH));
 
             //Load local settings, if added
             try {
-                properties.putAll(this.importPropertiesFile(assetManager, LOCAL_PROPERTIES_PATH));
+                properties.putAll(this.importPropertiesFile(assetManager, GQConstants.LOCAL_PROPERTIES_PATH));
             } catch (IOException e) {
                 // No local settings file found; ignore
             }
-        }
-        else {
+        } else {
             //Load production properties
-            properties.putAll(this.importPropertiesFile(assetManager, PRODUCTION_PROPERTIES_PATH));
+            properties.putAll(this.importPropertiesFile(assetManager, GQConstants.PRODUCTION_PROPERTIES_PATH));
         }
 
         //Initialize settings

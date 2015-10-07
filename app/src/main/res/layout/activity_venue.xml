@@ -1,134 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="venue"
+            type="com.app.upincode.getqd.networking.parsers.publik.PublicVenueParser" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Return"
-            android:layout_weight="1"
-            android:layout_marginBottom="5dp"
-            android:background="@color/GQColor"
-            android:id="@+id/VenueCancelButton" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/VenueCancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@color/GQColor"
+                android:text="Return"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{venue.name}"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/SalesStatsListView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Ranchmans"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:id="@+id/textView1" />
+            android:scaleType="fitXY"
+            android:src="@{venue.background}" />
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/OpenClosed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:text='@{venue.isOpen ? "Open" : "Closed"}'
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:background="@{venue.isOpen ? @color/green : @color/red}"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/ReservationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="4"
+                android:text="Reservation"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/InLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@color/GQColor"
+                android:text="In Line"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFF" />
+
+            <Button
+                android:id="@+id/Visits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@color/GQColor"
+                android:text="Visits"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFF" />
+
+            <Button
+                android:id="@+id/Favorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@color/GQColor"
+                android:text="Favorite"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFF" />
+
+            <Button
+                android:id="@+id/Events"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@color/GQColor"
+                android:text="Events"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFF" />
+
+            <Button
+                android:id="@+id/Chats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@color/GQColor"
+                android:text="Chat"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFF" />
+
+
+        </LinearLayout>
     </LinearLayout>
-
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/getqdbiglogowhite"
-        android:scaleType="fitXY"
-        android:id="@+id/SalesStatsListView" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Closed"
-            android:layout_weight="1"
-            android:layout_marginBottom="5dp"
-            android:textColor="#000"
-            android:id="@+id/OpenClosed" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Reservation"
-            android:layout_weight="4"
-            android:layout_marginBottom="5dp"
-            android:textColor="#000"
-            android:id="@+id/ReservationButton" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="In Line"
-            android:layout_weight="1"
-            android:textColor="#FFF"
-            android:layout_marginRight="5dp"
-            android:background="@color/GQColor"
-            android:id="@+id/InLine" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Visits"
-            android:textColor="#FFF"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:background="@color/GQColor"
-            android:id="@+id/Visits" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Favorite"
-            android:textColor="#FFF"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:background="@color/GQColor"
-            android:id="@+id/Favorites" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Events"
-            android:textColor="#FFF"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:background="@color/GQColor"
-            android:id="@+id/Events" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Chat"
-            android:textColor="#FFF"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:background="@color/GQColor"
-            android:id="@+id/Chats" />
-
-
-    </LinearLayout>
-</LinearLayout>
+</layout>

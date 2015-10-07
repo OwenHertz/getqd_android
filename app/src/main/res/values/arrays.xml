@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="reasons_array">
-        <item>General</item>
-        <item>Birthday</item>
-        <item>Stag</item>
-
+    <string-array name="nav_drawer_labels">
+        <item>@string/nav_item_home</item>
+        <item>@string/nav_item_profile</item>
+        <item>@string/nav_item_venue</item>
+        <item>@string/nav_item_events</item>
+        <item>@string/nav_item_my_tickets</item>
+        <item>@string/nav_item_logout</item>
     </string-array>
+
     <string-array name="Payment_Type">
         <item>Payment Type</item>
         <item>Pay with Interac</item>

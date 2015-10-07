@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">GetQD</string>
+    <string name="app_name">GetQd</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="GQStartActivity_FacebookLoginText">Facebook Login</string>
@@ -26,22 +26,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
-
-    <color name="white">#FFFFFF</color>
-    <color name="GQColor">#00CCCC</color>
-    <color name="GQBlue">#778899</color>
-    <color name="red">#ff0000</color>
-    <color name="orange">#ff5500</color>
-    <color name="transparent">#00000000</color>
-    <color name="date_color">#999999</color>
-    <color name="black">#000000</color>
-    <color name="gray">#999999</color>
-    <color name="blue">#0066cc</color>
-    <color name="gold">#e6b121</color>
-    <color name="blueback">#99FFFF</color>
-    <color name="articlecolor">#3399FF</color>
-    <color name="article_title">#3399FF</color>
-    <color name="cachecolor">#8ad0e8</color>
 
     <string name="title_activity_gqprofile">GQProfileActivity</string>
     <string name="title_activity_gqmain">GQMainActivity</string>
@@ -79,4 +63,32 @@
 
 
     <string name="ConfigMode">Large</string>
+    <string name="GQMainActivity_Title">Home</string>
+    <string name="toolbar_title">Menu</string>
+    <string name="profile_label">My Profile</string>
+    <string name="login_label">Please Login</string>
+    <string name="home_label">Home</string>
+    <string name="book_guest_label">Book a Reservation</string>
+    <string name="my_resos_label">My Reservations</string>
+    <string name="stats_summary_label">Event Stats Summary</string>
+    <string name="event_stats_label">Event Stats</string>
+    <string name="select_tickets_activity">Select Tickets</string>
+    <string name="events_label">Events</string>
+    <string name="credit_card_label">Credit Card</string>
+    <string name="interac_label">Interac</string>
+    <string name="complimentary_label">Complimentary</string>
+    <string name="my_tickets_label">My Tickets</string>
+    <string name="wait_list_label">My Wait List</string>
+    <string name="confirm_logout_label">Confirm Logout</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="nav_item_home">Home</string>
+    <string name="nav_item_profile">Profile</string>
+    <string name="nav_item_venue">Venues</string>
+    <string name="nav_item_events">Events</string>
+    <string name="nav_item_my_tickets">My Tickets</string>
+    <string name="nav_item_logout">Logout</string>
+    <string name="reservation_created_toast">Reservation created!</string>
 </resources>

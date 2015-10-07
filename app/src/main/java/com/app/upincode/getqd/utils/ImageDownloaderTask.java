@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import com.app.upincode.getqd.R;
 import com.app.upincode.getqd.logging.GQLog;
 
-import org.apache.http.HttpStatus;
+import com.app.upincode.getqd.networking.HttpStatus;
 
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
@@ -26,6 +26,7 @@ import java.net.URL;
 /**
  * Created by herbert on 7/29/2015.
  */
+//TODO remove
 public class ImageDownloaderTask extends AsyncTask<String, Void, Bitmap> {
     private final WeakReference<ImageView> imageViewReference;
 

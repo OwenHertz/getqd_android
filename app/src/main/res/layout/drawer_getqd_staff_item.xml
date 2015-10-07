@@ -1,73 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="venue"
+            type="com.app.upincode.getqd.networking.parsers.user_based.UBVenueParser" />
+    </data>
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:gravity="center_vertical"
-        android:textColor="#000"
-        android:text="Line 1"
-        android:textStyle="bold"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/tickets_icon"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@+id/title" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical"
+            android:text="@{venue.name}"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/title"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/tickets_icon"
+            android:src="@{venue.avatar}" />
+
+        <ImageButton
+            android:id="@+id/iconci"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/circle_with_check" />
+
+        <TextView
+            android:id="@+id/subTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/iconbg"
+            android:text="BOOK GUESTS MY RESOS  CHECK IN " />
+
+        <ImageButton
+            android:id="@+id/iconmr"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/iconci"
+            android:src="@drawable/circle_with_hamburger" />
+
+        <ImageButton
+            android:id="@+id/iconbg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/iconmr"
+            android:src="@drawable/circle_with_calendar" />
 
 
-    />
-
-    <ImageButton
-        android:id="@+id/iconci"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/venues_selected_icon"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp" />
-
-    <TextView
-        android:id="@+id/subTitle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BOOK GUESTS MY RESOS  CHECK IN "
-        android:layout_below="@+id/iconbg"
-        android:layout_alignParentRight="true" />
-
-    <ImageButton
-        android:id="@+id/iconmr"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/venues_selected_icon"
-        android:layout_toLeftOf="@+id/iconci"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp" />
-
-    <ImageButton
-        android:id="@+id/iconbg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/venues_selected_icon"
-        android:layout_toLeftOf="@+id/iconmr"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp" />
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</layout>
