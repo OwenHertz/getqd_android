@@ -15,12 +15,11 @@ import com.android.volley.VolleyError;
 import com.app.upincode.getqd.R;
 import com.app.upincode.getqd.activities.GQTicketsDisplayActivity;
 import com.app.upincode.getqd.activities.inputs.GenericArrayAdapter;
-import com.app.upincode.getqd.databinding.TicketItemBinding;
+import com.app.upincode.getqd.databinding.TicketGroupListItemBinding;
 import com.app.upincode.getqd.errors.GQVolleyErrorHandler;
 import com.app.upincode.getqd.networking.GQNetworkQueue;
 import com.app.upincode.getqd.networking.GQNetworkUtils;
 import com.app.upincode.getqd.networking.parsers.user_based.UBTicketGroupParser;
-import com.app.upincode.getqd.networking.parsers.generic.BasePaginationParser;
 import com.app.upincode.getqd.networking.requests.user_based.UBPaginatedListTicketGroupRequest;
 import com.app.upincode.getqd.utils.DateTimeUtils;
 
@@ -47,7 +46,7 @@ public class GQMyTicketsFragment extends MenuActionFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), GQTicketsDisplayActivity.class);
-                intent.putExtra(GQTicketsDisplayActivity.VENUE, ticketGroups.get(position).toString());
+                intent.putExtra(GQTicketsDisplayActivity.TICKET_GROUP, ticketGroups.get(position).toString());
                 startActivity(intent);
             }
 
@@ -101,7 +100,7 @@ public class GQMyTicketsFragment extends MenuActionFragment {
 
             if (view == null) {
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                TicketItemBinding binding = TicketItemBinding.inflate(inflater);
+                TicketGroupListItemBinding binding = TicketGroupListItemBinding.inflate(inflater);
                 binding.setTicketGroup(ticketGroup);
                 view = binding.getRoot();
             }

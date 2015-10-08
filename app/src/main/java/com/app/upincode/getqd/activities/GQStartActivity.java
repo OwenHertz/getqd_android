@@ -15,7 +15,7 @@ import com.app.upincode.getqd.networking.requests.RequestGroup;
 import com.app.upincode.getqd.networking.requests.auth.CreateAuthJWTRefreshRequest;
 import com.app.upincode.getqd.networking.parsers.auth.AuthJWTLoginTokenParser;
 import com.app.upincode.getqd.networking.requests.user_based.UBListVenueRequest;
-import com.app.upincode.getqd.networking.requests.generic.RetrieveCurrentUserRequest;
+import com.app.upincode.getqd.networking.requests.root.RetrieveCurrentUserRequest;
 import com.app.upincode.getqd.usr.GQUserPropertiesUtils;
 
 

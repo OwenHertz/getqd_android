@@ -45,7 +45,7 @@
 //
 //    private SSLSocketFactory newSslSocketFactory() {
 //        try {
-//            // Get an instance of the Bouncy Castle KeyStore format
+//            // Get an instance of the Bouncy Castle KeyStore getFormat
 //            KeyStore trusted = KeyStore.getInstance("BKS");
 //            // Get the raw resource, which contains the keystore with
 //            // your trusted certificates (root and any intermediate certs)

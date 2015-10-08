@@ -42,7 +42,7 @@ public class DateTimeAdapter extends TypeAdapter<DateTime> {
             DateTimeFormatter formatter = ISODateTimeFormat.dateTimeParser();
             return formatter.parseDateTime(str);
         } catch (IllegalArgumentException e) {
-            //Couldn't parse with this format
+            //Couldn't parse with this getFormat
         }
 
         return null;

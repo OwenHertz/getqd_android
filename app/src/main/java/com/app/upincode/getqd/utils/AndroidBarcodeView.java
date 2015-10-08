@@ -1227,8 +1227,8 @@ public class AndroidBarcodeView extends View {
 
         barcode.setDataMode(DataMatrix.M_AUTO);
 
-        // if your selected format mode doesnot have enough space to encode your data,
-        // the library will choose the right format mode for you automatically.
+        // if your selected getFormat mode doesnot have enough space to encode your data,
+        // the library will choose the right getFormat mode for you automatically.
         barcode.setFormatMode(DataMatrix.F_10X10);
 
         //  Set the processTilde property to true, if you want use the tilde character "~" to specify special characters in the input data. Default is false.

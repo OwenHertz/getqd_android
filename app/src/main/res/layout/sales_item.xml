@@ -1,64 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="1dp"
-    android:paddingBottom="1dp">
+    <data>
 
-    <TextView
-        android:id="@+id/eventDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="#000"
-        android:text="Date"
-        android:textStyle="bold"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" />
+        <import type="com.app.upincode.getqd.utils.DateFormatUtils"></import>
 
-    <TextView
-        android:id="@+id/eventTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="#000"
-        android:text="Time"
-        android:textStyle="bold"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/eventDate" />
+        <variable
+            name="event"
+            type="com.app.upincode.getqd.networking.parsers.publik.PublicEventParser" />
 
-    <TextView
-        android:id="@+id/eventSpacer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#000"
-        android:text="  "
-        android:textStyle="bold"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/eventTime" />
+    </data>
 
-    <TextView
-        android:id="@+id/eventVenue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#000"
-        android:text="Venue"
-        android:textStyle="bold"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{event.image_medium}"
+        android:paddingBottom="1dp"
+        android:paddingTop="1dp">
 
-    <TextView
-        android:id="@+id/eventTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#000"
-        android:text="The Event Name Goes Up Here"
-        android:textStyle="bold"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@id/eventVenue" />
+        <TextView
+            android:id="@+id/eventDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="@{DateFormatUtils.getMediumDateFormat(event.starts_on)}"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/eventTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/eventDate"
+            android:text="@{DateFormatUtils.getTimeFormat(event.starts_on)}"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/eventSpacer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/eventTime"
+            android:text="  "
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/eventVenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="@{event.venue.name}"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/eventTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/eventVenue"
+            android:layout_alignParentLeft="true"
+            android:text="@{event.name}"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</layout>

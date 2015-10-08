@@ -103,7 +103,7 @@ public class GQCardioActivity extends GQBaseActivity {
 
                     String theMonth = EditMon.getSelectedItem().toString();
                     if (theMonth.startsWith("0")) {
-                        theMonth = theMonth.replace("0", "");  // jeremey does not like 05 format of month.
+                        theMonth = theMonth.replace("0", "");  // jeremey does not like 05 getFormat of month.
                     }
                     // create a model and send it up.
                     //TODO fix

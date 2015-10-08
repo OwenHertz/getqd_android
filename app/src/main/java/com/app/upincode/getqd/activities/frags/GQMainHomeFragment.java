@@ -17,6 +17,7 @@ import com.app.upincode.getqd.activities.GQActivityUtils;
 import com.app.upincode.getqd.activities.GQBookGuestActivity;
 import com.app.upincode.getqd.activities.GQMyResoActivity;
 import com.app.upincode.getqd.activities.GQSalesActivity;
+import com.app.upincode.getqd.activities.GQStatisticsActivity;
 import com.app.upincode.getqd.activities.inputs.GenericArrayAdapter;
 import com.app.upincode.getqd.databinding.DrawerGetqdStaffItemBinding;
 import com.app.upincode.getqd.networking.parsers.user_based.UBVenueParser;
@@ -43,7 +44,7 @@ public class GQMainHomeFragment extends MenuActionFragment {
         buttonGetStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), GQSalesActivity.class);
+                Intent intent = new Intent(getActivity(), GQStatisticsActivity.class);
                 startActivity(intent);
             }
         });
@@ -51,7 +52,6 @@ public class GQMainHomeFragment extends MenuActionFragment {
         buttonStaffSellTickets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO fix
                 Intent intent = new Intent(getActivity(), GQSalesActivity.class);
                 startActivity(intent);
             }

@@ -1,4 +1,4 @@
-package com.app.upincode.getqd.networking.requests.generic;
+package com.app.upincode.getqd.networking.requests.root;
 
 import com.android.volley.Response;
 import com.app.upincode.getqd.networking.GQNetworkUtils;

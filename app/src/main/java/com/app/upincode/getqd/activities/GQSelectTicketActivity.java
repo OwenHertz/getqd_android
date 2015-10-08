@@ -36,6 +36,8 @@ import java.util.GregorianCalendar;
 
 
 public class GQSelectTicketActivity extends GQBaseActivity {
+    public static final String EVENT_ACCESS = "event_access";
+
     ListView listview = null;
     ImageView imageView = null;
     String CurrentJSON = null;
@@ -1126,8 +1128,8 @@ public class GQSelectTicketActivity extends GQBaseActivity {
 //                        totalCost = new Float(0.0);
 //                        serviceCharges = new Float(0.0);
 //                    }
-//                    results = String.format("%.2f", totalCost);
-//                    resultswithfees = String.format("%.2f", serviceCharges);
+//                    results = String.getFormat("%.2f", totalCost);
+//                    resultswithfees = String.getFormat("%.2f", serviceCharges);
 //                }
 //                setTotals("$" + results, "$" + resultswithfees);
 //

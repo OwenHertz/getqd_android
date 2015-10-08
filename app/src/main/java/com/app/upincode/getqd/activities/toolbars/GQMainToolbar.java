@@ -15,9 +15,6 @@ import com.app.upincode.getqd.activities.frags.GQMainProfileFragment;
 import com.app.upincode.getqd.activities.frags.GQMainVenueFragment;
 import com.app.upincode.getqd.activities.frags.MenuActionFragment;
 
-/**
- * Created by jpnauta on 15-10-03.
- */
 public class GQMainToolbar extends Toolbar {
 
     public GQMainToolbar(Context context) {

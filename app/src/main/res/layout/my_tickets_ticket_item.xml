@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.app.upincode.getqd.utils.DateFormatUtils"></import>
+
+        <import type="com.google.zxing.BarcodeFormat"></import>
+
+        <variable
+            name="ticket"
+            type="com.app.upincode.getqd.networking.parsers.user_based.UBTicketGroupParser.TicketParser" />
+
+        <variable
+            name="ticketGroup"
+            type="com.app.upincode.getqd.networking.parsers.user_based.UBTicketGroupParser" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/GQColor"
+                android:gravity="center_horizontal"
+                android:text='@{(ticket._position + 1) + " OF " + ticketGroup.ticketCountStr}' />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@{ticketGroup.type.event.name}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@{DateFormatUtils.getLongDateFormat(ticketGroup.type.event.starts_on)}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@{DateFormatUtils.getTimeFormat(ticketGroup.type.event.starts_on)}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@{ticketGroup.type.name}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@{ticket.barcode_string}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_horizontal"
+                android:src="@{ticket._barcode_bitmap}" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -18,7 +18,7 @@ import java.util.TimeZone;
 
 /**
  * Helper class for handling a most common subset of ISO 8601 strings
- * (in the following format: "2008-03-01T13:00:00+01:00"). It supports
+ * (in the following getFormat: "2008-03-01T13:00:00+01:00"). It supports
  * parsing the "Z" timezone, but many other less-used features are
  * missing.
  */
@@ -53,7 +53,7 @@ public final class ISO8601 {
         try {
             //"2015-08-19T23:27:32.83+00:00"
             //  GQLog.dObj(this,"pres="+s  + "length=" + s.length());
-            if (s.length() == 29) {  // this is a slightly funny format for ticket inventory.  We just take out the milli-seconds. and all is good.
+            if (s.length() == 29) {  // this is a slightly funny getFormat for ticket inventory.  We just take out the milli-seconds. and all is good.
                 s = s.substring(0, 19) + s.substring(23, 29);
                 //  GQLog.dObj(this,"changed pres="+s  + "length=" + s.length());
             }

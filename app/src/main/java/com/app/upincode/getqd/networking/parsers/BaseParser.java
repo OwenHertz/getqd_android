@@ -3,8 +3,10 @@ package com.app.upincode.getqd.networking.parsers;
 import android.databinding.BaseObservable;
 
 import com.app.upincode.getqd.config.GQConstants;
+import com.app.upincode.getqd.models.CoordinateSet;
 import com.app.upincode.getqd.networking.adapters.DateTimeAdapter;
 import com.app.upincode.getqd.networking.adapters.DateTimeZoneAdapter;
+import com.app.upincode.getqd.networking.adapters.CoordinateSetAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -27,10 +29,11 @@ public abstract class BaseParser extends BaseObservable {
     public static GsonBuilder getGsonBuilder() {
         GsonBuilder gsonBuilder = new GsonBuilder();
 
-        // Use ISO format when sending dates to server
+        // Use ISO getFormat when sending dates to server
         gsonBuilder.setDateFormat(GQConstants.ISO_FORMAT);
 
         //Register Gson type adapters
+        gsonBuilder.registerTypeAdapter(CoordinateSet.class, new CoordinateSetAdapter());
         gsonBuilder.registerTypeHierarchyAdapter(DateTime.class, new DateTimeAdapter());
         gsonBuilder.registerTypeHierarchyAdapter(DateTimeZone.class, new DateTimeZoneAdapter());
 

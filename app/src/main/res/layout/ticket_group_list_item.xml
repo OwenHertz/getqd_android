@@ -40,16 +40,12 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <TextView
+        <ImageView
             android:id="@+id/eventNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
-            android:text=" > "
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_keyboard_arrow_right_black_18dp" />
 
         <TextView
             android:id="@+id/eventTicketCount"
@@ -57,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/eventNext"
             android:gravity="center_vertical"
-            android:text="@{ticketGroup.ticket_count}"
+            android:text="@{ticketGroup.ticketCountStr}"
             android:textColor="@color/GQColor"
             android:textSize="20sp"
             android:textStyle="bold" />

@@ -1,113 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
 
-    <TextView
-        android:id="@+id/eventTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#000"
-        android:text="The Event Name Goes Up Here"
-        android:textStyle="bold"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/cashTitle"
-        android:layout_width="15dp"
-        android:layout_height="10dp"
-        android:src="@drawable/cash"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/eventTitle"
+    <data>
 
-        />
+        <import type="com.app.upincode.getqd.enums.PaymentType" />
+        <import type="com.app.upincode.getqd.utils.StringUtils" />
 
-    <TextView
-        android:id="@+id/cash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#000"
-        android:text="$$"
-        android:textStyle="bold"
-        android:layout_below="@+id/eventTitle"
-        android:layout_toRightOf="@+id/cashTitle" />
+        <variable
+            name="eventStat"
+            type="com.app.upincode.getqd.networking.parsers.user_based.UBEventStatParser" />
+    </data>
 
-    <ImageView
-        android:id="@+id/creditTitle"
-        android:layout_width="15dp"
-        android:layout_height="10dp"
-        android:src="@drawable/credit"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_toRightOf="@+id/cash"
-        android:layout_below="@+id/eventTitle"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
 
-        />
+        <TextView
+            android:id="@+id/eventTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@{eventStat.event.name}"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/credit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#000"
-        android:text="$$"
-        android:textStyle="bold"
-        android:layout_below="@+id/eventTitle"
-        android:layout_toRightOf="@+id/creditTitle" />
+        <ImageView
+            android:id="@+id/cashTitle"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/eventTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/cash"
 
-    <ImageView
-        android:id="@+id/debitTitle"
-        android:layout_width="15dp"
-        android:layout_height="10dp"
-        android:src="@drawable/debit"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_toRightOf="@+id/credit"
-        android:layout_below="@+id/eventTitle"
+            />
 
-        />
+        <TextView
+            android:id="@+id/cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/eventTitle"
+            android:layout_toRightOf="@+id/cashTitle"
+            android:text="@{StringUtils.asCurrency(eventStat.getAmountSold(PaymentType.CASH))}"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/debit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#000"
-        android:text="$$"
-        android:textStyle="bold"
-        android:layout_below="@+id/eventTitle"
-        android:layout_toRightOf="@+id/debitTitle" />
+        <ImageView
+            android:id="@+id/creditTitle"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
+            android:layout_below="@+id/eventTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/cash"
+            android:src="@drawable/credit"
 
-    <TextView
-        android:id="@+id/compTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#000"
-        android:text="  COMP "
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/debit"
-        android:layout_below="@+id/eventTitle" />
+            />
 
-    <TextView
-        android:id="@+id/comp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#000"
-        android:text=" $$"
-        android:textStyle="bold"
-        android:layout_below="@+id/eventTitle"
-        android:layout_toRightOf="@+id/compTitle" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/credit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/eventTitle"
+            android:layout_toRightOf="@+id/creditTitle"
+            android:text="@{StringUtils.asCurrency(eventStat.getAmountSold(PaymentType.CREDIT))}"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/debitTitle"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
+            android:layout_below="@+id/eventTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/credit"
+            android:src="@drawable/debit"
+
+            />
+
+        <TextView
+            android:id="@+id/debit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/eventTitle"
+            android:layout_toRightOf="@+id/debitTitle"
+            android:text="@{StringUtils.asCurrency(eventStat.getAmountSold(PaymentType.INTERAC))}"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/compTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/eventTitle"
+            android:layout_toRightOf="@+id/debit"
+            android:text="  COMP "
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/comp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/eventTitle"
+            android:layout_toRightOf="@+id/compTitle"
+            android:text="@{StringUtils.asCurrency(eventStat.getAmountSold(PaymentType.COMPLIMENTARY))}"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</layout>

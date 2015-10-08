@@ -14,17 +14,17 @@ import java.util.Map;
  * <p/>
  * Created by jpnauta on 15-09-18.
  */
-public class VBListReservationRequest extends GsonRequest<VBReservationParser[]> {
+public class VBPaginatedListReservationRequest extends GsonRequest<VBReservationParser.PaginationParser> {
 
-    public VBListReservationRequest(int venueID, Map<String, String> headers, Response.Listener<VBReservationParser[]> listener, Response.ErrorListener errorListener) {
+    public VBPaginatedListReservationRequest(int venueID, Map<String, String> headers, Response.Listener<VBReservationParser.PaginationParser> listener, Response.ErrorListener errorListener) {
         this(venueID, headers, new HashMap<String, String>(), listener, errorListener);
     }
 
-    public VBListReservationRequest(int venueID, Map<String, String> headers, HashMap<String, String> queryParams,
-                                    Response.Listener<VBReservationParser[]> listener, Response.ErrorListener errorListener) {
+    public VBPaginatedListReservationRequest(int venueID, Map<String, String> headers, HashMap<String, String> queryParams,
+                                             Response.Listener<VBReservationParser.PaginationParser> listener, Response.ErrorListener errorListener) {
         super(Request.Method.GET,
                 GQNetworkUtils.fullGQUrl("/api/venue/" + venueID + "/reservations/", queryParams),
-                VBReservationParser[].class,
+                VBReservationParser.PaginationParser.class,
                 headers, listener, errorListener);
     }
 }

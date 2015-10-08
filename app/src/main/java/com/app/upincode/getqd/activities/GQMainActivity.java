@@ -7,15 +7,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.app.upincode.getqd.R;
-import com.app.upincode.getqd.activities.toolbars.GQMainToolbar;
 import com.app.upincode.getqd.drawers.FragmentDrawer;
 
-//TODO kill interfaces
 public class GQMainActivity extends GQBaseActivity implements FragmentDrawer.FragmentDrawerListener {
-    /**
-     * Activity that uses the main GQ toolbar
-     */
-    protected GQMainToolbar toolbar;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,10 +44,8 @@ public class GQMainActivity extends GQBaseActivity implements FragmentDrawer.Fra
 
         this.setContentView(com.app.upincode.getqd.R.layout.activity_gqmain);
 
-        //Initialize toolbar
-        toolbar = (GQMainToolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //Initialize menu
+        initMenuButtonToolbar();
         FragmentDrawer drawerFragment = (FragmentDrawer)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
@@ -61,59 +53,6 @@ public class GQMainActivity extends GQBaseActivity implements FragmentDrawer.Fra
 
         //Show home fragment first
         this.toolbar.displayView(this, 0);
-
-        //TODO remove
-//        mNavigationDrawerFragment = (com.app.upincode.getqd.NavigationDrawerFragment)
-//                getSupportFragmentManager().findFragmentById(com.app.upincode.getqd.R.id.navigation_drawer);
-//        mTitle = getTitle();
-//
-//        // Set up the drawer.
-//        mNavigationDrawerFragment.setUp(
-//                com.app.upincode.getqd.R.id.navigation_drawer,
-//                (DrawerLayout) findViewById(com.app.upincode.getqd.R.id.drawer_layout));
-
-        //TODO remove
-        // in the extra we input like one of these strings. We match to target fragment and call the right one.
-//        String profile = (String) getString(com.app.upincode.getqd.R.string.Frag_Target_Profile);
-//        String venues = (String) getString(com.app.upincode.getqd.R.string.Frag_Target_Venues);
-//        String events = (String) getString(com.app.upincode.getqd.R.string.Frag_Target_Events);
-//        String tickets = (String) getString(com.app.upincode.getqd.R.string.Frag_Target_Tickets);
-//        String staff = (String) getString(com.app.upincode.getqd.R.string.Frag_Target_Staff);
-//        String logout = (String) getString(com.app.upincode.getqd.R.string.Frag_Target_Logout);
-//
-//        Intent intenty = getIntent();
-//        String target = intenty.getStringExtra("target");
-//
-//        if (getResources().getString(com.app.upincode.getqd.R.string.ConfigMode).equals("Small")) {
-//            smallMode = true;
-//        } else {
-//            smallMode = false;
-//        }
-//        if (smallMode == false) {
-//            if (target.equals(profile)) {
-//                onNavigationDrawerItemSelected(0);
-//            } else if (target.equals(venues)) {
-//                onNavigationDrawerItemSelected(1);
-//            } else if (target.equals(events)) {
-//                onNavigationDrawerItemSelected(2);
-//            } else if (target.equals(tickets)) {
-//                onNavigationDrawerItemSelected(3);
-//            } else if (target.equals(staff)) {
-//                onNavigationDrawerItemSelected(4);
-//            } else if (target.equals(logout)) {
-//                onNavigationDrawerItemSelected(5);
-//            }
-//        } else {
-//            if (target.equals(profile)) {
-//                onNavigationDrawerItemSelected(0);
-//            } else if (target.equals(staff)) {
-//                onNavigationDrawerItemSelected(1);
-//            } else if (target.equals(logout)) {
-//                onNavigationDrawerItemSelected(2);
-//            }
-//
-//        }
-
     }
 
     //TODO remove

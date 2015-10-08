@@ -18,16 +18,17 @@ public class GQProfileActivity extends GQBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.app.upincode.getqd.R.layout.activity_gqprofile);
+        //TODO create separate activity xml for registering (can't be shared with profile update activity)
+//        setContentView(com.app.upincode.getqd.R.layout.activity_gqprofile);
+//
+//        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+//        String UserName = globalVariable.getProfileValue(getApplicationContext(), "UserName");
+//        String Email = globalVariable.getProfileValue(getApplicationContext(), "Email");
 
-        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-        String UserName = globalVariable.getProfileValue(getApplicationContext(), "UserName");
-        String Email = globalVariable.getProfileValue(getApplicationContext(), "Email");
-
-        tvName = (TextView) findViewById(com.app.upincode.getqd.R.id.ProfileFirstLastName);
-        tvName.setText(UserName);
-        tvEmail = (TextView) findViewById(com.app.upincode.getqd.R.id.ProfileEmail);
-        tvEmail.setText(Email);
+//        tvName = (TextView) findViewById(com.app.upincode.getqd.R.id.ProfileFirstLastName);
+//        tvName.setText(UserName);
+//        tvEmail = (TextView) findViewById(com.app.upincode.getqd.R.id.ProfileEmail);
+//        tvEmail.setText(Email);
 
         final Button button1 = (Button) findViewById(com.app.upincode.getqd.R.id.RegCancelButton);
         button1.setOnClickListener(new View.OnClickListener() {

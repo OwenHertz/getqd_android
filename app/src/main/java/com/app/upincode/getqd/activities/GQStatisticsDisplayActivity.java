@@ -24,6 +24,9 @@ import org.json.JSONObject;
 
 
 public class GQStatisticsDisplayActivity extends GQBaseActivity {
+    //TODO clean up!!!
+    public static final String EVENT_STAT = "event_stat";
+
     ViewFlipper vf = null;
     int thePostion = 0;
 
@@ -35,7 +38,7 @@ public class GQStatisticsDisplayActivity extends GQBaseActivity {
 
         // this gives us the position in the listview (same as position in json) we will access json this way.
         Intent intent = getIntent();
-        String target = intent.getStringExtra("position");
+        String target = intent.getStringExtra(EVENT_STAT);
         thePostion = Integer.parseInt(target);
 
 

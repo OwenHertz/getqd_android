@@ -25,6 +25,8 @@ public class GQConfirmLogoutActivity extends GQBaseActivity {
 
         this.setContentView(R.layout.activity_confirm_logout);
 
+        this.initBackButtonToolbar();
+
         //Perform logout when 'yes' is pressed
         btnYes = (Button) this.findViewById(R.id.onClickFragment_logout_buttonYes);
         btnYes.setOnClickListener(new View.OnClickListener() {

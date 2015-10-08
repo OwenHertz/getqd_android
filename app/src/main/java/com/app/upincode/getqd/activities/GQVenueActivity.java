@@ -28,6 +28,9 @@ public class GQVenueActivity extends GQBaseActivity {
         venue = PublicVenueParser.fromString(PublicVenueParser.class, intent.getStringExtra(VENUE));
         binding.setVenue(venue);
 
+        this.setTitle(venue.name);
+        this.initBackButtonToolbar();
+
         btnChat = (Button) findViewById(com.app.upincode.getqd.R.id.Chats);
 
         //btnChat.setText(Html.fromHtml(styledText));
@@ -37,14 +40,6 @@ public class GQVenueActivity extends GQBaseActivity {
                 GQLog.dObj(this, "chat button pressed");
 
                 //selectDate();   // we need to put up the date dialog. So user can select the date
-            }
-        });
-        // we go back to the staff upon pressing return.
-        Button btyes = (Button) findViewById(com.app.upincode.getqd.R.id.VenueCancelButton);
-        btyes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

@@ -34,7 +34,7 @@ import java.util.List;
 
 
 public class GQBookGuestActivity extends GQBaseActivity {
-    public static final String VENUE = "VENUE";
+    public static final String VENUE = "TICKET_GROUP";
 
     DatePickerButton btnDate;
     TimePickerButton btnTime;
@@ -50,6 +50,9 @@ public class GQBookGuestActivity extends GQBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityGqstaffbookguestBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_gqstaffbookguest);
+
+        this.setTitle("Book Guest List");
+        initBackButtonToolbar();
 
         //Retrieve selected venue sent via JSON
         Intent intent = getIntent();
@@ -90,7 +93,7 @@ public class GQBookGuestActivity extends GQBaseActivity {
         btnDate.addDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                reservation.arrival_date =  reservation.arrival_date
+                reservation.arrival_date = reservation.arrival_date
                         .withYear(year).withMonthOfYear(monthOfYear).withDayOfMonth(dayOfMonth);
                 reservation.notifyChange();
             }
@@ -103,15 +106,6 @@ public class GQBookGuestActivity extends GQBaseActivity {
                 reservation.arrival_date = reservation.arrival_date
                         .withHourOfDay(hourOfDay).withMinuteOfHour(minute);
                 reservation.notifyChange();
-            }
-        });
-
-        //Finish intent if cancel button is clicked
-        Button btyes = (Button) findViewById(com.app.upincode.getqd.R.id.StaffCancelReservationButton);
-        btyes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
 

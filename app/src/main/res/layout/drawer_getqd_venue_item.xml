@@ -67,18 +67,12 @@
 
             />
 
-        <TextView
+        <ImageView
             android:id="@+id/arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/email"
-            android:layout_marginLeft="3dp"
-            android:gravity="top"
-            android:text=" > "
-            android:textColor="#000"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_keyboard_arrow_right_black_18dp" />
 
         <TextView
             android:id="@+id/isOpen"

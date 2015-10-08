@@ -8,7 +8,7 @@ import com.app.upincode.getqd.networking.parsers.BaseParser;
  *
  * To make a pagination parser for your needs, create the following class:
  *
- * public class MyClassPaginationParser extends BasePaginationParser{
+ * public class PaginationParser extends BasePaginationParser{
  *     public MyClass[] results;
  * }
  */
