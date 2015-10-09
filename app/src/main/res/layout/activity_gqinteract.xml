@@ -1,101 +1,79 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context="com.app.upincode.getqd.activities.GQProfileActivity">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
 
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            tools:context="com.app.upincode.getqd.activities.GQProfileActivity">
 
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/FirstName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white"
+                    android:hint="First Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/LastName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white"
+                    android:hint="Last Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/Email"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white"
+                    android:hint="Email"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/MobileNumber"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white"
+                    android:hint="Phone Number"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:id="@+id/SubmitButton"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/GQStaffResv_CancelText"
-                    android:layout_weight="1"
+                    android:layout_below="@id/MobileNumber"
                     android:layout_marginBottom="5dp"
                     android:background="@color/GQColor"
-                    android:id="@+id/StaffCancelReservationButton" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Customer Information"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="1"
-                    android:id="@+id/textView1" />
+                    android:text="Finish. Submit Request"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginBottom="5dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:hint="First Name"
-                android:id="@+id/BookGuestFirstName" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginBottom="5dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:hint="Last Name"
-                android:id="@+id/BookGuestLastName" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginBottom="5dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:hint="Email"
-                android:id="@+id/BookGuestEmail" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginBottom="5dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:hint="Phone Number"
-                android:id="@+id/BookGuestMobileNumber" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Finish. Submit Request"
-                android:background="@color/GQColor"
-                android:textColor="@color/white"
-                android:id="@+id/SubmitButton"
-                android:layout_marginBottom="5dp"
-                android:layout_below="@id/BookGuestMobileNumber" />
-
-        </LinearLayout>
-    </RelativeLayout>
-</ScrollView>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

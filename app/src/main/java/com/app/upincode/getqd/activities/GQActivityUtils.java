@@ -1,6 +1,5 @@
 package com.app.upincode.getqd.activities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.widget.Toast;
@@ -13,9 +12,10 @@ import com.app.upincode.getqd.GlobalClass;
 public class GQActivityUtils {
     /**
      * Shows an alert dialog to the user
+     *
      * @param activity the activity to display for
-     * @param title the title to display
-     * @param message the message to display
+     * @param title    the title to display
+     * @param message  the message to display
      */
     public static void showAlert(Context context, String title, String message) {
 

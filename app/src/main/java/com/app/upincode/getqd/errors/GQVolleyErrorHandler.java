@@ -65,7 +65,7 @@ public class GQVolleyErrorHandler extends GQBaseErrorHandler {
     public String getMessage() {
         NetworkResponse response = this.error.networkResponse;
 
-        if (this.error instanceof NoConnectionError || response == null) {
+        if (this.error instanceof NoConnectionError) {
             // No response sent from server (404)
             return "Please check your internet connection and try again later. (No response given)";
         } else if (response.statusCode == HttpStatus.SC_BAD_REQUEST) {
@@ -91,6 +91,7 @@ public class GQVolleyErrorHandler extends GQBaseErrorHandler {
 
     @Override
     public void handle(Context context) {
+        error.printStackTrace();
         this.showAlert(context, "Error", this.getMessage());
     }
 }

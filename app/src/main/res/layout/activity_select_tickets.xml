@@ -1,202 +1,187 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <data>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <import type="com.app.upincode.getqd.utils.StringUtils" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/GQStaffResv_CancelText"
-                android:layout_weight="1"
-                android:layout_marginBottom="5dp"
-                android:background="@color/GQColor"
-                android:id="@+id/StaffCancelReservationButton" />
+        <variable
+            name="eventAccess"
+            type="com.app.upincode.getqd.networking.parsers.box_office.BOEventAccessParser" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Select Tickets"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:id="@+id/textView1" />
+        <variable
+            name="basket"
+            type="com.app.upincode.getqd.networking.parsers.box_office.BOTicketBasketParser" />
+    </data>
 
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
 
         <TextView
+            android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="TIME AND SHOW NAME GO HERE"
-            android:textColor="@color/white"
             android:layout_gravity="center"
-            android:gravity="left|top"
-            android:id="@+id/textViewTitle" />
+            android:gravity="top"
+            android:text="TIME AND SHOW NAME GO HERE"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/textView02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Tickets Assigned"
-            android:textColor="@color/GQColor"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_marginBottom="5dp"
-            android:id="@+id/textView02" />
+            android:gravity="center"
+            android:text="Tickets Assigned"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/GQColor" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/GQBlue"
-            android:textColor="@color/white"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:textColor="@color/white">
 
             <TextView
+                android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="TICKET TYPE"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:id="@+id/textView12" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="AMOUNT"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_marginBottom="5dp"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:id="@+id/textView22" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/textView32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="PRICE"
                 android:layout_gravity="center"
-                android:textColor="@color/white"
-                android:gravity="center"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:id="@+id/textView32" />
+                android:gravity="center"
+                android:text="PRICE"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <ListView
+            android:id="@+id/listViewStaff"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/listViewStaff" />
+            android:layout_height="200dp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Spinner
+                android:id="@+id/Delivery_Method"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:layout_gravity="start"
                 android:layout_marginBottom="5dp"
                 android:layout_marginRight="5dp"
-                android:entries="@array/Delivery_Method"
-                android:prompt="@+id/reason_prompt"
-                android:layout_gravity="left"
                 android:layout_weight="1"
-                android:gravity="left"
-                android:id="@+id/Delivery_Method" />
+                android:background="@color/white"
+                android:gravity="start" />
 
             <Spinner
+                android:id="@+id/PayWith"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:layout_gravity="end"
                 android:layout_marginBottom="5dp"
-                android:entries="@array/Payment_Type"
-                android:prompt="@+id/reason_prompt"
-                android:layout_gravity="right"
                 android:layout_weight="1"
-                android:gravity="left"
-                android:id="@+id/PayWith" />
+                android:background="@color/white"
+                android:gravity="start"
+                android:hint="Select Payment Type"/>
         </LinearLayout>
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:layout_height="wrap_content"
             android:background="@color/GQBlue"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:textColor="@color/white">
 
             <TextView
                 android:id="@+id/totalprice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="$0.00"
-                android:textStyle="bold"
                 android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="@{StringUtils.asCurrency(basket.subtotal)}"
                 android:textColor="@color/white"
-                android:layout_alignParentTop="true" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/totalpricewithfees"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:text="$0.00"
-                android:textStyle="bold"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/totalprice" />
+                android:layout_below="@id/totalprice"
+                android:text="@{StringUtils.asCurrency(basket.full_price)}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/eventVenue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:text="Total"
-                android:textStyle="bold"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true" />
+                android:layout_alignParentTop="true"
+                android:text="Total"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/eventTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:text="+Taxes + Fees"
-                android:textStyle="bold"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/eventVenue" />
+                android:layout_below="@id/eventVenue"
+                android:text="+Taxes + Fees"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <Button
+                android:id="@+id/ContinueButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Continue"
+                android:layout_alignParentBottom="true"
                 android:background="@color/GQColor"
-                android:textColor="@color/white"
-                android:id="@+id/ContinueButton"
-                android:layout_below="@id/eventTitle" />
+                android:text="Continue"
+                android:textColor="@color/white" />
         </RelativeLayout>
 
     </LinearLayout>
-</ScrollView>
+</layout>

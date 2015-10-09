@@ -32,7 +32,8 @@
         android:theme="@style/GQMaterialTheme">
         <activity
             android:name=".activities.GQStartActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,7 +63,8 @@
             android:label="@string/event_stats_label"/>
         <activity
             android:name=".activities.GQSelectTicketActivity"
-            android:label="@string/select_tickets_activity"/>
+            android:label="@string/select_tickets_activity"
+            android:noHistory="true"/>
         <activity
             android:name=".activities.GQSalesActivity"
             android:label="@string/events_label"/>

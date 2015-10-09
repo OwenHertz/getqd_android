@@ -16,4 +16,13 @@ public class IntegerUtils {
         }
         return true;
     }
+
+    public static Integer[] getRange(int start, int stop) {
+        Integer[] result = new Integer[stop - start];
+
+        for (int i = 0; i < stop - start; i++)
+            result[i] = start + i;
+
+        return result;
+    }
 }

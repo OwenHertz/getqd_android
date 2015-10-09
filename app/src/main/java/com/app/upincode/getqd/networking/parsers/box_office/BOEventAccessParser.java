@@ -24,12 +24,16 @@ public class BOEventAccessParser extends BaseParser {
     }
 
     public class InventoryParser extends BaseParser {
-        class TicketTypeParser extends BaseParser {
+        public class TicketTypeParser extends BaseParser {
             public Integer id;
             public String name;
+            public Double price;
+            public Double total_price;
+            public Integer purchase_limit;
         }
 
         public Integer limit_count;
+        public TicketTypeParser ticket_type;
     }
 
     public String slug;

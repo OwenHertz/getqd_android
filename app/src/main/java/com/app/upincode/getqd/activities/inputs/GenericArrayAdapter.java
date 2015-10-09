@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public abstract class GenericArrayAdapter<T> extends ArrayAdapter<T> {
+public class GenericArrayAdapter<T> extends ArrayAdapter<T> {
     private LayoutInflater mInflater;
 
     public GenericArrayAdapter(Context context, List<T> objects) {

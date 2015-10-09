@@ -58,6 +58,9 @@ public class GlobalClass extends Application {
             System.exit(1);
         }
     }
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+    }
 
     /*  These are the profile fields for the User.
     LoginID

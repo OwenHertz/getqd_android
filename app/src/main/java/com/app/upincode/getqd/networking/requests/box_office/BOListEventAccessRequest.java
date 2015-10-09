@@ -19,7 +19,9 @@ public class BOListEventAccessRequest extends GsonRequest<BOEventAccessParser[]>
     }
 
     public BOListEventAccessRequest(Map<String, String> headers, HashMap<String, String> queryParams, Response.Listener<BOEventAccessParser[]> listener, Response.ErrorListener errorListener) {
-        super(Request.Method.GET, GQNetworkUtils.fullGQUrl("/api/events/box-office/event-accesses/", queryParams), BOEventAccessParser[].class,
+        super(Request.Method.GET,
+                GQNetworkUtils.fullGQUrl("/api/events/box-office/event-accesses/", queryParams),
+                BOEventAccessParser[].class,
                 headers, listener, errorListener);
     }
 }
