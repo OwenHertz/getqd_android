@@ -192,6 +192,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       case Surface.ROTATION_0:
       case Surface.ROTATION_90:
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        break;
         default:
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
     }
