@@ -4,6 +4,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.HttpHeaderParser;
+import com.app.upincode.getqd.networking.parsers.BaseParser;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.UnsupportedEncodingException;
@@ -15,7 +16,7 @@ import java.util.Map;
  *
  * @param <T> the serializer class. Can use list (e.g. MySerializer[]) to specify an array of objects
  */
-public class GsonRequest<T> extends BaseGsonRequest<T> {
+public class GsonRequest<T extends BaseParser> extends BaseGsonRequest<T> {
     protected final Class<T> clazz;
 
     /**
@@ -58,8 +59,12 @@ public class GsonRequest<T> extends BaseGsonRequest<T> {
         try {
             String json = new String(
                     response.data, HttpHeaderParser.parseCharset(response.headers));
-            return Response.success(
-                    getGsonBuilder().create().fromJson(json, clazz), this.getCacheHeaders(response));
+
+            // Parse JSON object from server response
+            T obj = getGsonBuilder().create().fromJson(json, clazz);
+            obj.networkResponse = response; //Set network response for later use
+
+            return Response.success(obj, this.getCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
         } catch (JsonSyntaxException e) {
