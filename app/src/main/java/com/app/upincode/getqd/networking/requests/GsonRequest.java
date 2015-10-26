@@ -16,7 +16,7 @@ import java.util.Map;
  *
  * @param <T> the serializer class. Can use list (e.g. MySerializer[]) to specify an array of objects
  */
-public class GsonRequest<T extends BaseParser> extends BaseGsonRequest<T> {
+public class GsonRequest<T> extends BaseGsonRequest<T> {
     protected final Class<T> clazz;
 
     /**
@@ -62,7 +62,10 @@ public class GsonRequest<T extends BaseParser> extends BaseGsonRequest<T> {
 
             // Parse JSON object from server response
             T obj = getGsonBuilder().create().fromJson(json, clazz);
-            obj.networkResponse = response; //Set network response for later use
+
+            if (obj instanceof BaseParser) {
+                ((BaseParser) obj).networkResponse = response; //Set network response for later use
+            }
 
             return Response.success(obj, this.getCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
