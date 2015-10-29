@@ -2,6 +2,7 @@ package com.app.upincode.getqd.networking.parsers;
 
 import android.databinding.BaseObservable;
 
+import com.android.volley.NetworkResponse;
 import com.app.upincode.getqd.config.GQConstants;
 import com.app.upincode.getqd.models.CoordinateSet;
 import com.app.upincode.getqd.networking.adapters.DateTimeAdapter;
@@ -14,6 +15,8 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 public abstract class BaseParser extends BaseObservable {
+    public NetworkResponse networkResponse; //Set by GsonRequest after response complete
+
     /**
      * Serializes the parser to JSON
      */
