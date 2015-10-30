@@ -32,7 +32,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/title"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/tickets_icon"
+            android:background="@drawable/herbgraybackground"
             android:src="@{venue.avatar}" />
 
         <ImageButton

@@ -15,12 +15,30 @@
  */
 package android.client.zxing.google.com.myscanningapplication;
 //import android.client.zxing.google.com.myscanningapplication.CaptureActivity;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.app.upincode.getqd.GlobalClass;
 import com.app.upincode.getqd.activities.CaptureActivity;
 import android.content.ActivityNotFoundException;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.provider.Browser;
+
+import com.app.upincode.getqd.activities.GQActivityUtils;
+import com.app.upincode.getqd.activities.GQScanEventsActivity;
+import com.app.upincode.getqd.errors.GQVolleyErrorHandler;
+import com.app.upincode.getqd.networking.GQNetworkQueue;
+import com.app.upincode.getqd.networking.GQNetworkUtils;
+import com.app.upincode.getqd.networking.HttpStatus;
+import com.app.upincode.getqd.networking.parsers.venue_based.VBEventsCheckInScanParser;
+import com.app.upincode.getqd.networking.parsers.venue_based.VBEventsTicketHistoryParser;
+import com.app.upincode.getqd.networking.requests.venue_based.VBEventsCheckInScanRequest;
+import com.app.upincode.getqd.utils.IntentIntegrator;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
@@ -34,6 +52,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Collection;
 import java.util.Map;
@@ -79,6 +99,9 @@ public final class CaptureActivityHandler extends Handler {
 
   @Override
   public void handleMessage(Message message) {
+
+
+
     switch (message.what) {
       case R.id.restart_preview:
         restartPreviewAndDecode();
@@ -97,6 +120,13 @@ public final class CaptureActivityHandler extends Handler {
           }
           scaleFactor = bundle.getFloat(DecodeThread.BARCODE_SCALED_FACTOR);          
         }
+        final GlobalClass globalVariable = GQActivityUtils.getGlobalClass(activity);
+        String VenueID = globalVariable.getScanVenueID();
+        String EventID = globalVariable.getScanEventID();
+        String BarCode = message.obj.toString();
+
+        Log.d("Herb", "VenID=" +VenueID+ " EventID="+EventID+ "  BarCode=" + BarCode);
+        ScanIt(VenueID,EventID,BarCode);
         activity.handleDecode((Result) message.obj, barcode, scaleFactor);
         break;
       case R.id.decode_failed:
@@ -138,7 +168,107 @@ public final class CaptureActivityHandler extends Handler {
         break;
     }
   }
+  VBEventsCheckInScanRequest request = null;
+  public void ScanIt(String VenueID, String EventID, String BarCode ) {
+    Integer[] eventArray = new Integer[1];
+    eventArray[0] = new Integer(EventID);
+    VBEventsCheckInScanParser parser = new VBEventsCheckInScanParser(BarCode, eventArray);
+    int venueid = Integer.parseInt(VenueID);
+    // Perform request
 
+    request = new VBEventsCheckInScanRequest(
+            venueid, parser, GQNetworkUtils.getRequestHeaders(activity),
+            new Response.Listener<VBEventsTicketHistoryParser>() {
+              @Override
+              public void onResponse(VBEventsTicketHistoryParser json) {
+                //If this is called, server returned 2xx response!
+                int status=request.networkResponse.statusCode;
+                if(request == null ) {
+                  Log.d("Herb Internal","null json");
+                } else if(request.networkResponse == null) {
+                  Log.d("Herb Internal","null json.networkResponse");
+                } else if(request.networkResponse.statusCode == 0) {
+                  Log.d("Herb Internal","0 json.networkResponse.statusCode");
+                } else {
+                  status =request.networkResponse.statusCode;
+                }
+                ;
+                // Ring a bell or something
+                //VolleyError theError = Response.
+
+                if (status == HttpStatus.SC_CREATED) {
+                  // Ticket successfully scanned!
+                  Toast toast = Toast.makeText(activity.getApplicationContext(), "Ticket is Good!", Toast.LENGTH_LONG);
+                  TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                  v.setTextColor(Color.GREEN);
+                  v.setTextSize(30);
+                  toast.show();
+                  ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, 100);
+                  toneG.startTone(ToneGenerator.TONE_CDMA_CALL_SIGNAL_ISDN_PING_RING, 200);
+
+                } else if (status == HttpStatus.SC_ACCEPTED) {
+                  // No ticket found/scanned
+
+                  Toast toast = Toast.makeText(activity.getApplicationContext(), "Ticket is NO Good!", Toast.LENGTH_LONG);
+                  TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                  v.setTextColor(Color.RED);
+                  v.setTextSize(30);
+                  toast.show();
+                  ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, 100);
+                  toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 200);
+
+                } else if (status == 0) {
+                  Toast toast = Toast.makeText(activity.getApplicationContext(), "Testing Toast Here", Toast.LENGTH_LONG);
+                  TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                  v.setTextColor(Color.GREEN);
+                  v.setTextSize(30);
+                  toast.show();
+                  ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, 100);
+                  toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 200);
+                }
+              }
+            },
+            new Response.ErrorListener() {
+              @Override
+              public void onErrorResponse(VolleyError error) {
+                //Something went wrong! Server returned 4xx or 5xx error
+/*
+201 is good
+202 no ticket found/scanned
+400 cannot perform this action e.g. ticket alread scanned- ticket does not belong to the event.
+ */
+
+                Log.d("HERB","Response.ErrorListener  Caught an Error =" + error.getMessage());
+                NetworkResponse theError = error.networkResponse;
+                Log.d("Herb","Response.ErrorListener = "+Integer.toString(theError.statusCode));
+                int status = theError.statusCode;
+                Toast.makeText(activity.getApplicationContext(), "Ticket is NO good, Status= " + status, Toast.LENGTH_LONG).show();
+
+
+                if (status == HttpStatus.SC_CREATED) {
+                  // Ticket successfully scanned!
+                } else if (status == HttpStatus.SC_ACCEPTED) {
+                  // No ticket found/scanned
+                }
+
+                //You may want to handle 'Cannot perform action' errors differently
+                // than other request failures. If so, do something like this:
+                //  if (error.networkResponse != null && error.networkResponse.statusCode == HttpStatus.SC_BAD_REQUEST) {
+                //Special error handler
+                //  }
+                //  else {
+                // Regular response handler
+                //  new GQVolleyErrorHandler(error).handle(GQBookGuestActivity.this);
+                //   }
+
+
+                //Use generic error handler to tell the user that something went wrong
+                new GQVolleyErrorHandler(error).handle(activity);
+              }
+            });
+    // Add the request to the RequestQueue.
+    GQNetworkQueue.getInstance(activity).addToRequestQueue(request);
+  }
   public void quitSynchronously() {
     state = State.DONE;
     cameraManager.stopPreview();

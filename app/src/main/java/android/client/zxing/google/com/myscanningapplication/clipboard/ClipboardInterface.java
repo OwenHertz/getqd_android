@@ -21,14 +21,19 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.util.Log;
 
-public final class ClipboardInterface {
-  
-  private static final String TAG = ClipboardInterface.class.getSimpleName();
+import com.app.upincode.getqd.GlobalClass;
+import com.app.upincode.getqd.activities.GQActivityUtils;
+import com.app.upincode.getqd.networking.parsers.user_based.UBVenueParser;
 
+public final class ClipboardInterface {
+  //final Context myContext = null;
+  private static final String TAG = ClipboardInterface.class.getSimpleName();
+ // private    Context myContext = null;//                GlobalClass globalVariable = (GlobalClass) myContext.getApplicationContext()
   private ClipboardInterface() {
   }
 
   public static CharSequence getText(Context context) {
+   // myContext = context;
     ClipboardManager clipboard = getManager(context);
     ClipData clip = clipboard.getPrimaryClip();
     return hasText(context) ? clip.getItemAt(0).coerceToText(context) : null;
@@ -36,7 +41,14 @@ public final class ClipboardInterface {
 
   public static void setText(CharSequence text, Context context) {
     if (text != null) {
-      Log.d("HERB","Copy to Clipboard with text = " + text);
+      //final GlobalClass globalVariable = GQActivityUtils.getGlobalClass(this);
+
+      //final GlobalClass globalVariable = GQActivityUtils.getGlobalClass(this);
+     // GlobalClass globalVariable = myContext.getApplicationContext();
+      //Set name and email in global/application context
+      //String venueID = new String("XXX");  //globalVariable.getScanVenueID();
+     // Log.d("HERB", "Clipboard interface Scanned number = " + text  + " VenueID = " +venueID);
+      //GlobalClass globalClass = (GlobalClass) getApplicationContext();
       try {
         getManager(context).setPrimaryClip(ClipData.newPlainText(null, text));
       } catch (NullPointerException | IllegalStateException e) {
@@ -55,5 +67,7 @@ public final class ClipboardInterface {
   private static ClipboardManager getManager(Context context) {
     return (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
   }
+
+
 
 }

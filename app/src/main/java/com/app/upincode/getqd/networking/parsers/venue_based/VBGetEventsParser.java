@@ -10,26 +10,20 @@ import org.joda.time.DateTime;
  */
 
 //Parser for sending barcode to server
-public class VBReservationParser extends BaseParser {
+public class VBGetEventsParser extends BaseParser {
     public class PaginationParser extends BasePaginationParser {
-        public VBReservationParser[] results;
+        public  VBGetEventsParser[] results;
     }
 
-    public class VenueReservationUserParser extends BaseParser {
+    public class VenueGetEventsUserParser extends BaseParser {
         public Integer id;
         public String username;
     }
 
     public Integer id;
-    public Integer num_of_people;
-    public Boolean is_approved;
     public String name;
-    public String details;
-    public DateTime arrival_date;
-    public VenueReservationUserParser user;
-    public Integer[] checkin_set;
+    public String venue;
+    public DateTime starts_on;
+    public VenueGetEventsUserParser user;
 
-    public Integer getNum_checked_in() {
-        return checkin_set.length;
-    }
 }

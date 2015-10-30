@@ -1,13 +1,24 @@
 package com.app.upincode.getqd.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.app.upincode.getqd.R;
 import com.app.upincode.getqd.drawers.FragmentDrawer;
+import com.app.upincode.getqd.errors.GQVolleyErrorHandler;
+import com.app.upincode.getqd.networking.GQNetworkQueue;
+import com.app.upincode.getqd.networking.GQNetworkUtils;
+import com.app.upincode.getqd.networking.HttpStatus;
+import com.app.upincode.getqd.networking.parsers.venue_based.VBEventsCheckInScanParser;
+import com.app.upincode.getqd.networking.parsers.venue_based.VBEventsTicketHistoryParser;
+import com.app.upincode.getqd.networking.requests.venue_based.VBEventsCheckInScanRequest;
 
 public class GQMainActivity extends GQBaseActivity implements FragmentDrawer.FragmentDrawerListener {
 
@@ -54,8 +65,61 @@ public class GQMainActivity extends GQBaseActivity implements FragmentDrawer.Fra
         //Show home fragment first
         this.toolbar.displayView(this, 0);
     }
+    @Override
+    public   void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        Log.d("Herb", "RequestCode3 = " + requestCode);
+        Log.d("Herb", "ResultCode3 = " + resultCode);
 
-    //TODO remove
+        //Create request data sent to server
+        String VenueID = new String("Cowboys");
+        Integer[] venueArray =  new Integer[]{1,2,3,4};
+        VBEventsCheckInScanParser parser =  new VBEventsCheckInScanParser(VenueID,venueArray);
+
+        // Perform request
+/*
+        VBEventsCheckInScanRequest request = new VBEventsCheckInScanRequest(
+                this.venue.id, parser, GQNetworkUtils.getRequestHeaders(this),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(VBEventsTicketHistoryParser json) {
+                        //If this is called, server returned 2xx response!
+
+                        int status = json.networkResponse.statusCode;
+
+                        if (status == HttpStatus.SC_CREATED) {
+                            // Ticket successfully scanned!
+                        } else if (status == HttpStatus.SC_ACCEPTED) {
+                            // No ticket found/scanned
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //Something went wrong! Server returned 4xx or 5xx error
+
+
+                         //You may want to handle 'Cannot perform action' errors differently
+                        // than other request failures. If so, do something like this:
+                       //  if (error.networkResponse != null && error.networkResponse.statusCode == HttpStatus.SC_BAD_REQUEST) {
+                         //Special error handler
+                       //  }
+                       //  else {
+                         // Regular response handler
+                       //  new GQVolleyErrorHandler(error).handle(GQBookGuestActivity.this);
+                      //   }
+
+
+                        //Use generic error handler to tell the user that something went wrong
+                        new GQVolleyErrorHandler(error).handle(GQBookGuestActivity.this);
+                    }
+                });
+        // Add the request to the RequestQueue.
+        GQNetworkQueue.getInstance(this).addToRequestQueue(request);
+*/
+    }
+
+        //TODO remove
 //
 //    public void OnButtonClickedStaffBookguest(int position) {
 //        GQLog.dObj(this, "ONButtonClicked booked guest with position=" + position);

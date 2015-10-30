@@ -36,6 +36,8 @@ public class GlobalClass extends Application {
     private String TicketsTicketGroup = null;
     private String IAMI = null;
     private String SellingRole = null;
+    private String ScanningVenueID = null;
+    private String ScanningEventID = null;
     private UBVenueParser[] userVenues;
     private CurrentUserParser currentUser;
 
@@ -333,7 +335,26 @@ public class GlobalClass extends Application {
 
         return SellingRole;
     }
+    public void setScanVenueID(String aName) {
+        //Log.d("GlobalClass", "SetCsrfToken to" + aName);
+        ScanningVenueID= aName;
+    }
 
+
+    public String getScanVenueID() {
+        return ScanningVenueID;
+    }
+
+    //===
+    public void setScanEventID(String aName) {
+        //Log.d("GlobalClass", "SetCsrfToken to" + aName);
+        ScanningEventID= aName;
+    }
+
+
+    public String getScanEventID() {
+        return ScanningEventID;
+    }
     public void setUserVenues(UBVenueParser[] userVenues) {
         this.userVenues = userVenues;
     }
