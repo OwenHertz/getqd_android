@@ -21,7 +21,6 @@ import com.app.upincode.getqd.activities.GQStatisticsActivity;
 import com.app.upincode.getqd.activities.inputs.GenericArrayAdapter;
 import com.app.upincode.getqd.databinding.DrawerGetqdStaffItemBinding;
 import com.app.upincode.getqd.networking.parsers.user_based.UBVenueParser;
-import com.app.upincode.getqd.activities.CaptureActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -104,7 +103,6 @@ public class GQMainHomeFragment extends MenuActionFragment {
                     Intent intent = new Intent(getActivity(), GQMyResoActivity.class);
                     intent.putExtra(GQMyResoActivity.VENUE, venue.toString()); // start with the Staff fragment
                     startActivity(intent);
-
                 }
             });
 
@@ -112,11 +110,8 @@ public class GQMainHomeFragment extends MenuActionFragment {
             iconViewci.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //GQActivityUtils.showAlert(getActivity(),
-                      //      "Not Supported", "Scan Check In is not supported at this time");
-                    Intent intent = new Intent(getActivity(), CaptureActivity.class);
-                    intent.putExtra(GQMyResoActivity.VENUE, venue.toString()); // start with the Staff fragment
-                    startActivity(intent);
+                    GQActivityUtils.showAlert(getActivity(),
+                            "Not Supported", "Scan Check In is not supported at this time");
                 }
             });
             return view;

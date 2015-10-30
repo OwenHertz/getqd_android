@@ -15,8 +15,6 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 public abstract class BaseParser extends BaseObservable {
-    public NetworkResponse networkResponse; //Set by GsonRequest after response complete
-
     /**
      * Serializes the parser to JSON
      */
