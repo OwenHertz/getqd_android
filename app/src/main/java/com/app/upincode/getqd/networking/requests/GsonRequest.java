@@ -19,6 +19,8 @@ import java.util.Map;
 public class GsonRequest<T> extends BaseGsonRequest<T> {
     protected final Class<T> clazz;
 
+    public NetworkResponse networkResponse; //Set by GsonRequest after response complete
+
     /**
      * Constructor typically used for POST/PUT/DELETE requests.
      *
@@ -60,12 +62,11 @@ public class GsonRequest<T> extends BaseGsonRequest<T> {
             String json = new String(
                     response.data, HttpHeaderParser.parseCharset(response.headers));
 
+            // Store response for later access
+            this.networkResponse = response;
+
             // Parse JSON object from server response
             T obj = getGsonBuilder().create().fromJson(json, clazz);
-
-            if (obj instanceof BaseParser) {
-                ((BaseParser) obj).networkResponse = response; //Set network response for later use
-            }
 
             return Response.success(obj, this.getCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
