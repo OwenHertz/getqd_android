@@ -26,6 +26,7 @@ import com.app.upincode.getqd.GlobalClass;
 import com.app.upincode.getqd.activities.inputs.GenericArrayAdapter;
 import com.app.upincode.getqd.databinding.ReservationItemBinding;
 import com.app.upincode.getqd.databinding.ScanEventItemBinding;
+import com.app.upincode.getqd.errors.GQUnexpectedErrorHandler;
 import com.app.upincode.getqd.errors.GQVolleyErrorHandler;
 import com.app.upincode.getqd.networking.GQNetworkQueue;
 import com.app.upincode.getqd.networking.GQNetworkUtils;
@@ -42,6 +43,7 @@ import com.app.upincode.getqd.utils.DateTimeUtils;
 import com.app.upincode.getqd.utils.IntentIntegrator;
 import com.app.upincode.getqd.utils.IntentResult;
 import org.joda.time.DateTime;
+import org.json.JSONException;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -222,7 +224,7 @@ if(scan == true ) {
                     } else if (status == HttpStatus.SC_ACCEPTED) {
                         // No ticket found/scanned
 
-                        Toast toast = Toast.makeText(getApplicationContext(), "Scanned Ticket is No Good!", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Ticket not found!", Toast.LENGTH_LONG);
                         TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                         v.setTextColor(Color.RED);
                         v.setTextSize(30);
@@ -246,45 +248,30 @@ if(scan == true ) {
             new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    //Something went wrong! Server returned 4xx or 5xx error
-/*
-201 is good
-202 no ticket found/scanned
-400 cannot perform this action e.g. ticket alread scanned- ticket does not belong to the event.
- */
 
-                    Log.d("HERB","Response.ErrorListener  Caught an Error =" + error.getMessage());
-                    NetworkResponse theError = error.networkResponse;
-                    Log.d("Herb","Response.ErrorListener = "+Integer.toString(theError.statusCode));
-                    int status = theError.statusCode;
+                    if (GQNetworkUtils.isServerValidationError(error)) {
+                        //Something went wrong! Server returned 4xx or 5xx error
+                        try {
+                            // Parse message from error response
+                            String message = GQNetworkUtils.parseGQJsonErrorMessage(error.networkResponse);
 
-                    Toast toast = Toast.makeText(getApplicationContext(), "Ticket is NO Good! Status =" + status, Toast.LENGTH_LONG);
-                    TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(Color.RED);
-                    v.setTextSize(30);
-                    toast.show();
-                    Toast.makeText(getApplicationContext(), "Ticket is NO good, Status= " + status, Toast.LENGTH_LONG).show();
+                            //Show message to user
+                            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+                            TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                            v.setTextColor(Color.RED);
+                            v.setTextSize(30);
+                            toast.show();
+                            ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, 100);
+                            toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 200);
 
-
-                    if (status == HttpStatus.SC_CREATED) {
-                        // Ticket successfully scanned!
-                    } else if (status == HttpStatus.SC_ACCEPTED) {
-                        // No ticket found/scanned
+                        } catch (JSONException e) {
+                            //Unexpected error!
+                            new GQUnexpectedErrorHandler(e).handle(getApplicationContext());
+                        }
+                    } else {
+                        //Unexpected error!
+                        new GQVolleyErrorHandler(error).handle(getApplicationContext());
                     }
-
-                    //You may want to handle 'Cannot perform action' errors differently
-                    // than other request failures. If so, do something like this:
-                    //  if (error.networkResponse != null && error.networkResponse.statusCode == HttpStatus.SC_BAD_REQUEST) {
-                    //Special error handler
-                    //  }
-                    //  else {
-                    // Regular response handler
-                    //  new GQVolleyErrorHandler(error).handle(GQBookGuestActivity.this);
-                    //   }
-
-
-                    //Use generic error handler to tell the user that something went wrong
-                    new GQVolleyErrorHandler(error).handle(GQScanEventsActivity.this);
                 }
             });
     // Add the request to the RequestQueue.

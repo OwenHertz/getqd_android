@@ -9,6 +9,7 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 
+import com.app.upincode.getqd.networking.GQNetworkUtils;
 import com.app.upincode.getqd.networking.HttpStatus;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +22,6 @@ import java.util.List;
  */
 public class GQVolleyErrorHandler extends GQBaseErrorHandler {
     protected VolleyError error;
-    public List<String> errorMessageFields = Arrays.asList("detail", "error");
 
     public GQVolleyErrorHandler(VolleyError error) {
         super();
@@ -36,19 +36,7 @@ public class GQVolleyErrorHandler extends GQBaseErrorHandler {
      * @return The message of the JSON body
      */
     public String parseGQJsonErrorMessage(JSONObject json) throws JSONException {
-        for (String field : this.errorMessageFields) {
-            if (json.has(field)) {
-                try {
-                    return json.getString(field);
-                } catch (JSONException e) {
-                    // If field is not a string, ignore
-                }
-            }
-        }
-
-        //Ideally the raw JSON shouldn't be displayed, but if no message can be
-        //found, so be it
-        return json.toString();
+        return GQNetworkUtils.parseGQJsonErrorMessage(json);
     }
 
     /**
@@ -59,7 +47,7 @@ public class GQVolleyErrorHandler extends GQBaseErrorHandler {
      * @return The message of the JSON body
      */
     public String parseGQJsonErrorMessage(String jsonBody) throws JSONException {
-        return this.parseGQJsonErrorMessage(new JSONObject(new String(jsonBody)));
+        return GQNetworkUtils.parseGQJsonErrorMessage(jsonBody);
     }
 
     public String getMessage() {

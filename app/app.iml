@@ -136,8 +136,8 @@
     <orderEntry type="library" exported="" name="play-services-base-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="commons-lang3-3.3.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-appinvite-7.8.0" level="project" />
-    <orderEntry type="library" exported="" name="android-sdk-5.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-7.8.0" level="project" />
+    <orderEntry type="library" exported="" name="android-sdk-5.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-appindexing-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-gcm-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-games-7.8.0" level="project" />
@@ -166,8 +166,8 @@
     <orderEntry type="library" exported="" name="compiler-1.0-rc1" level="project" />
     <orderEntry type="library" exported="" name="ST4-4.0.8" level="project" />
     <orderEntry type="library" exported="" name="play-services-wallet-7.8.0" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-23.0.1" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-maps-7.8.0" level="project" />
     <orderEntry type="module" module-name="barcode4j-2.1" exported="" />
     <orderEntry type="module" module-name="OnBarcode.AndroidBarcode" exported="" />
