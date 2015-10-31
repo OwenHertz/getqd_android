@@ -90,8 +90,10 @@ public class GQMainHomeFragment extends MenuActionFragment {
                 view = binding.getRoot();
             }
             ImageView logoView = (ImageView) view.findViewById(R.id.logo);
+
+
             if (logoView != null) {
-                //new ImageDownloaderTask(logoView).execute(mNavItems.get(position).mURL);
+                //new ImageDownloaderTask(logoView).execute(R.id.);
                 new ImageDownloaderTask(logoView).execute("https://getqd-beta.s3.amazonaws.com/media/images/venues/ranchmans/avatars/countrylogo.PNG");
             }
 

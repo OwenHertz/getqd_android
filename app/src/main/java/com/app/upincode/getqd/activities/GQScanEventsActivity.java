@@ -59,7 +59,7 @@ public class GQScanEventsActivity extends GQBaseActivity {
     List<VBGetEventsParser> events;
     int theEventID = 0;
     IntentIntegrator integrator = null;
-    boolean userIntegrator = true;  // true means you external app. false internal
+    boolean userIntegrator = true;  // true means you external app. false internal bundled with getqd app
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

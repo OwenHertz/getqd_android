@@ -127,6 +127,7 @@ public final class CaptureActivityHandler extends Handler {
 
         Log.d("Herb", "VenID=" +VenueID+ " EventID="+EventID+ "  BarCode=" + BarCode);
         ScanIt(VenueID,EventID,BarCode);
+       // activity.onHerbResume();  // reinit the camera
         activity.handleDecode((Result) message.obj, barcode, scaleFactor);
         break;
       case R.id.decode_failed:
